@@ -1,29 +1,41 @@
-/* 
-const MiPrimerComponente = (props) => {
+import CartWidget from "./cartWidget"
+import {Menu, MenuButton, MenuList, MenuItem, Flex, Box, Spacer} from "@chakra-ui/react"
 
-    console.log(props)
-  return (
-    <div>{props.curso}</div>
-  )
-}
-
-export default MiPrimerComponente */
-
-/* DESESTRUCTURAMOS EL PROPS PARA ACCEDER A CURSO */
-
-const NavBar = ({curso, usuario, greeting, tomarValor}) => {
-
-  tomarValor(36)
+const NavBar = () => {
   
 return (
   <>
-    <div>{curso}</div>
-    <h1>{greeting}</h1>
-    <h2>{usuario ? "Estás logueado" : "Debes registrarte"}</h2>
-  
+  <Flex>
+  <Box p='4'>
+    Cookie Submarine
+  </Box>
+  <Spacer />
+  <Box p='4'>
+    <Menu>
+      <MenuButton>
+        Productos
+      </MenuButton>
+      <MenuList>
+        <MenuItem>Tortas</MenuItem>
+        <MenuItem>Brownies</MenuItem>
+        <MenuItem>Cookies</MenuItem>
+        <MenuItem>Personalizados</MenuItem>
+      </MenuList>
+    </Menu>
+  </Box>
+  <Spacer />
+  <Box p='4'>
+   <CartWidget/>
+  </Box>
+ </Flex>
+
+
+
+
+
   </>
 
 )
 }
 
-export default MiPrimerComponente
+export default NavBar
