@@ -1,5 +1,3 @@
-
-
 import NavBar from "./components/NavBar"
 import ItemListContainer from "./components/itemListContainer"
 
@@ -7,7 +5,6 @@ import ItemListContainer from "./components/itemListContainer"
 const App = () => {
 
   const greeting = "Bienvenidos a Cookie Submarine"
-
 
   return (
    <>
@@ -17,6 +14,7 @@ const App = () => {
     <ItemListContainer
     greeting = {greeting}
     />
+    
 
    </>
   )

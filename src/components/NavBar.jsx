@@ -19,7 +19,7 @@ return (
         <MenuItem>Tortas</MenuItem>
         <MenuItem>Brownies</MenuItem>
         <MenuItem>Cookies</MenuItem>
-        <MenuItem>Personalizados</MenuItem>
+        <MenuItem>Chocolates</MenuItem>
       </MenuList>
     </Menu>
   </Box>
