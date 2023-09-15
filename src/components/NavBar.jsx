@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import CartWidget from "./cartWidget"
 import {Menu, MenuButton, MenuList, MenuItem, Flex, Box, Spacer} from "@chakra-ui/react"
 
@@ -7,7 +8,9 @@ return (
   <>
   <Flex>
   <Box p='4'>
-    Cookie Submarine
+    <Link to={"/"}>
+      Cookie Submarine
+    </Link>
   </Box>
   <Spacer />
   <Box p='4'>
@@ -16,16 +19,18 @@ return (
         Productos
       </MenuButton>
       <MenuList>
-        <MenuItem>Tortas</MenuItem>
-        <MenuItem>Brownies</MenuItem>
-        <MenuItem>Cookies</MenuItem>
-        <MenuItem>Chocolates</MenuItem>
+        <MenuItem><Link to={`/category/${"torta"}`}>Tortas</Link></MenuItem>
+        <MenuItem><Link to={`/category/${"brownie"}`}>Brownies</Link></MenuItem>
+        <MenuItem><Link to={`/category/${"cookie"}`}>Cookies</Link></MenuItem>
+        <MenuItem><Link to={`/category/${"chocolate"}`}>Chocolates</Link></MenuItem>
       </MenuList>
     </Menu>
   </Box>
   <Spacer />
   <Box p='4'>
-   <CartWidget/>
+   <Link to={"/cart"}>
+      <CartWidget/>
+   </Link>
   </Box>
  </Flex>
 
