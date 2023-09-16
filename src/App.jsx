@@ -18,13 +18,11 @@ const App = () => {
       <NavBar/>
 
       <Routes>
-{/*         <ItemListContainer/>
-        <ItemDetailContainer/> */}
         <Route exact path="/" element={<ItemListContainer/>}/>
         <Route exact path="/contacto" element={<Contacto/>}/>
         <Route exact path="/cart" element={<Cart/>}/>
         <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
-        <Route exact path="/category/:id" element={<ItemListContainer/>}/>
+        <Route exact path="/category/:categoryId" element={<ItemListContainer/>}/>
       </Routes>
     </BrowserRouter>
     

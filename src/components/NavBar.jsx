@@ -2,18 +2,20 @@ import { Link } from "react-router-dom"
 import CartWidget from "./cartWidget"
 import {Menu, MenuButton, MenuList, MenuItem, Flex, Box, Spacer} from "@chakra-ui/react"
 
+
+
 const NavBar = () => {
   
 return (
   <>
-  <Flex>
-  <Box p='4'>
+  <Flex bg="pink">
+  <Box p='4' >
     <Link to={"/"}>
       Cookie Submarine
     </Link>
-  </Box>
+  </Box >
   <Spacer />
-  <Box p='4'>
+  <Box p='4' >
     <Menu>
       <MenuButton>
         Productos

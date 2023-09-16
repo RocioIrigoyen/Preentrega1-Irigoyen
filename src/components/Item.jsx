@@ -8,18 +8,12 @@ const Item = ({nombre,descripcion,precio,id}) => {
         <Card maxW='sm'>
             <CardBody>
                 <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
+                src='https://sugarfreelondoner.com/wp-content/uploads/2020/12/sugar-free-birthday-cake-chocolate-1200.jpg'
+                alt='torta de chocolate'
                 borderRadius='lg'
                 />
                 <Stack mt='6' spacing='3'>
-                <Heading size='md'>{nombre}</Heading>
-                <Text>
-                    {descripcion}
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    ${precio}
-                </Text>
+                    <Heading size='md'>{nombre}</Heading>
                 </Stack>
             </CardBody>
             <Divider />
