@@ -41,9 +41,6 @@ const ItemDetail = ({productos}) => {
                                 </CardBody>
                     
                                 <CardFooter>
-                                    <Button variant='solid' colorScheme='blue'>
-                                        Agregar al carrito
-                                    </Button>
                                     <ItemCount/>
                                 </CardFooter>
                             </Stack>

@@ -5,6 +5,7 @@ import ItemListContainer from "./components/itemListContainer"
 import Contacto from "./components/Contacto"
 import Cart from "./components/Cart"
 import ItemDetail from "./components/ItemDetail"
+import Form from "./components/Form"
 
 
 const App = () => {
@@ -14,8 +15,11 @@ const App = () => {
   return (
    <>
 
+    
     <BrowserRouter>
       <NavBar/>
+      <Form/>
+
 
       <Routes>
         <Route exact path="/" element={<ItemListContainer/>}/>

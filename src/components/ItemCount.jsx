@@ -1,38 +1,54 @@
 import React from 'react'
 import {useState, useEffect} from "react"
-import {NumberInput, NumberInputField,NumberInputStepper,NumberIncrementStepper,NumberDecrementStepper} from "@chakra-ui/react"
+import {NumberInput, NumberInputField,NumberInputStepper,NumberIncrementStepper,NumberDecrementStepper,Button} from "@chakra-ui/react"
 
 const ItemCount = () => {
     const [cantidad, setCantidad] = useState(0)
+    const [ocultar, setOcultar] = useState(false)
+
     const onAdd = () => {
       alert(`Agregado al carrito: ${cantidad} productos`)
+      setOcultar(true)
     }
     
-    useEffect(()=>{
-      console.log("UseEffect")
-  
-    },[cantidad])
+    const sumarCantidad = () => {
+      if (cantidad < 10) {
+        setCantidad(cantidad + 1)
+      }
+    }
+
+    const restarCantidad = () => {
+      if (cantidad > 0) {
+        setCantidad(cantidad - 1)
+      }
+    }
+
+    const vaciarCarrito = () => {
+      setCantidad(0)
+    }
+
     
     return (
       <>
-      <h2>{cantidad}</h2>
-      <button onClick={()=> setCantidad(cantidad + 1)}>Sumar</button>
-      <button onClick={()=> setCantidad(cantidad - 1)}>Quitar</button>
 
+      { !ocultar && (
+        <>
+        <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper  onClick={sumarCantidad} />
+            <NumberDecrementStepper onClick={restarCantidad}/>
+          </NumberInputStepper>
+        </NumberInput>
+        
+        <Button variant='solid' colorScheme='blue' onClick={onAdd}>Agregar al carrito</Button>
+        </>
+       )
+      }
 
-      <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10}>
-        <NumberInputField />
-        <NumberInputStepper>
-        <NumberIncrementStepper  onClick={()=> setCantidad(cantidad + 1)} />
-        <NumberDecrementStepper onClick={()=> setCantidad(cantidad - 1)}/>
-        </NumberInputStepper>
-      </NumberInput>
-
-      <button onClick={onAdd}>Agregar al carrito</button>
       </>
     )
 }
 
 export default ItemCount
 
-//¿Cómo hacer un if dentro del setCantidad? ¿un for?
