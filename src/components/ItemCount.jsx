@@ -12,7 +12,7 @@ const ItemCount = ({p}) => {
 
     const onAdd = () => {
       if (cantidad > 0) {
-        addItem(p)
+        addItem(p, cantidad)
         setOcultar(true)
         alert(`Agregado al carrito: ${cantidad} productos`)
       } else {
@@ -43,7 +43,7 @@ const ItemCount = ({p}) => {
 
       { !ocultar && (
         <>
-        <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10}>
+        <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10} value={cantidad}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper  onClick={sumarCantidad} />
@@ -51,6 +51,7 @@ const ItemCount = ({p}) => {
           </NumberInputStepper>
         </NumberInput>
         
+      
         <Button variant='solid' colorScheme='blue' onClick={onAdd}>Agregar al carrito</Button>
         </>
        )

@@ -11,26 +11,33 @@ export const ShoppingCartProvider = ({children})=> {
     const [cart, setCart] = useState([])  
     const [montoAPagar, setMontoAPagar] = useState(0)
 
-    const addItem = (item) => {
-        const nuevoProd = item
-        const verifyIndex =  cart.findIndex((p) => {
-            return p.id === nuevoProd.id
-        })
-        if(verifyIndex === -1){
-            setCart([...cart, nuevoProd])
-            console.log(cart)
-        } 
+    const addItem = (item, quantity) => {
+        setCart([...cart, item])
+        item.cantidadAgregada = quantity
+        item.precioFinal = item.precio * quantity
+        setMontoAPagar(montoAPagar + item.precioFinal)
+        console.log(cart)
     }
 
-    /* addItem(item, quantity) // agregar cierta cantidad de un ítem al carrito
+    const removeItem = (id) => {
+        const newCart = cart.filter((p)=> p.id !== id)
+        setCart(newCart)
+        //tira error
+    }
+
+    const clearCart= () => {
+        setCart([])
+        setCantidad(0)
+    }
+
+    /* 
       removeItem(itemId) // Remover un item del cart por usando su id
-      clear() // Remover todos los items
       isInCart: (id) => true|false
  */
 
 
     return(
-        <CartContext.Provider value={{id, cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem}}>  {/* doble llave */}
+        <CartContext.Provider value={{id, cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, clearCart,removeItem}}>  {/* doble llave */}
             {children}
         </CartContext.Provider>
     )

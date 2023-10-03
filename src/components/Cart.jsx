@@ -1,11 +1,12 @@
 import React from 'react'
 import Form from './Form'
+import { Link } from 'react-router-dom'
 import { Card, Heading, Text, CardBody, Stack, CardFooter, Button, Image, Divider, ButtonGroup } from '@chakra-ui/react'
 import { CartContext } from '../context/ShoppingCartContext'
 import { useContext } from 'react'
 
 const Cart = () => {
-  const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, id} = useContext(CartContext)
+  const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, id, clearCart, removeItem} = useContext(CartContext)
   
   return (
     <>
@@ -23,11 +24,12 @@ const Cart = () => {
                     <Heading size='md'>{p.nombre}</Heading>
                 </Stack>
                 <Text color='blue.600' fontSize='2xl'>
-                  ${p.precio}
+                  ${p.precioFinal}
                 </Text>
                 <Text py='2'>
-                 Cantidad: ingresar cantidad
+                 Cantidad seleccionada: {p.cantidadAgregada} productos
                 </Text>
+                <Button>Eliminar</Button>
             </CardBody>
         </Card> 
         </div>
@@ -35,11 +37,17 @@ const Cart = () => {
     })}
     
     {cart.length > 0 ? 
-    <Form/> 
+    <div>
+      <h3>Monto a pagar: ${montoAPagar}</h3>
+      <Form/>
+      <Button onClick={clearCart}>Vaciar carrito</Button>
+    </div>
     : 
     <div>
-      <h2>No hay productos en el carrito</h2> 
-      <button>Volver al inicio</button>
+      <h2>No hay productos en el carrito</h2>
+      <Link to={"/"}>
+       <button>Volver al inicio</button>
+       </Link> 
     </div>}
     
     </>
