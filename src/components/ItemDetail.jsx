@@ -3,16 +3,14 @@ import { Card, Heading, Text, CardBody, Stack, CardFooter, Button, Image } from 
 import ItemCount from './ItemCount'
 import { useParams } from 'react-router-dom'
 
-const ItemDetail = ({productos}) => {
-    const {id} = useParams()
+const ItemDetail = ({producto}) => {
 
-    const productosFiltrados = productos.filter((producto) => producto.id == id)
+
 
   return (
-    <div>
-        {productosFiltrados.map((p)=>{
-            return(
-                <div key={p.id}>
+    <>
+        
+                <div key={producto.id}>
                     <Card
                     direction={{ base: 'column', sm: 'row' }}
                     overflow='hidden'
@@ -27,29 +25,29 @@ const ItemDetail = ({productos}) => {
             
                         <Stack>
                             <CardBody>
-                                <Heading size='md'>{p.nombre}</Heading>
+                                <Heading size='md'>{producto.nombre}</Heading>
                         
                                     <Text color='blue.600' fontSize='2xl'>
-                                    ${p.precio}
+                                    ${producto.precio}
                                     </Text>
                                     <Text py='2'>
-                                        {p.descripcion}
+                                        {producto.descripcion}
                                     </Text>
                                     <Text py='2'>
-                                        Stock disponible: {p.stock}
+                                        Stock disponible: {producto.stock}
                                     </Text>
                                 </CardBody>
                     
                                 <CardFooter>
-                                    <ItemCount/>
+                                    <ItemCount p={producto} />
                                 </CardFooter>
                             </Stack>
                     </Card>
                 </div>
 
-            )
-        })}
-    </div>
+            
+        
+    </>
   )
 }
 

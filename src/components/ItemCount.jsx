@@ -1,14 +1,24 @@
 import React from 'react'
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import {NumberInput, NumberInputField,NumberInputStepper,NumberIncrementStepper,NumberDecrementStepper,Button} from "@chakra-ui/react"
+import { CartContext } from '../context/ShoppingCartContext'
 
-const ItemCount = () => {
-    const [cantidad, setCantidad] = useState(0)
+const ItemCount = ({p}) => {
+  
+    const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, id} = useContext(CartContext)
+
+
     const [ocultar, setOcultar] = useState(false)
 
     const onAdd = () => {
-      alert(`Agregado al carrito: ${cantidad} productos`)
-      setOcultar(true)
+      if (cantidad > 0) {
+        addItem(p)
+        setOcultar(true)
+        alert(`Agregado al carrito: ${cantidad} productos`)
+      } else {
+        alert("Por favor, indique la cantidad de productos")
+      }
+
     }
     
     const sumarCantidad = () => {
@@ -18,7 +28,7 @@ const ItemCount = () => {
     }
 
     const restarCantidad = () => {
-      if (cantidad > 0) {
+      if (cantidad > 1) {
         setCantidad(cantidad - 1)
       }
     }
