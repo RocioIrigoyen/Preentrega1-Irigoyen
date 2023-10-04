@@ -33,17 +33,13 @@ const ItemCount = ({p}) => {
       }
     }
 
-    const vaciarCarrito = () => {
-      setCantidad(0)
-    }
-
     
     return (
       <>
 
       { !ocultar && (
         <>
-        <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10} value={cantidad}>
+        <NumberInput size='md' maxW={24} defaultValue={0} min={0} max={10}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper  onClick={sumarCantidad} />
@@ -51,7 +47,6 @@ const ItemCount = ({p}) => {
           </NumberInputStepper>
         </NumberInput>
         
-      
         <Button variant='solid' colorScheme='blue' onClick={onAdd}>Agregar al carrito</Button>
         </>
        )

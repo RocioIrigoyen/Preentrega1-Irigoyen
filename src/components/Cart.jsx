@@ -5,8 +5,9 @@ import { Card, Heading, Text, CardBody, Stack, CardFooter, Button, Image, Divide
 import { CartContext } from '../context/ShoppingCartContext'
 import { useContext } from 'react'
 
+
 const Cart = () => {
-  const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, id, clearCart, removeItem} = useContext(CartContext)
+  const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, clearCart, removeItem} = useContext(CartContext)
   
   return (
     <>
@@ -29,7 +30,7 @@ const Cart = () => {
                 <Text py='2'>
                  Cantidad seleccionada: {p.cantidadAgregada} productos
                 </Text>
-                <Button>Eliminar</Button>
+                <Button  onClick={() => removeItem(p,p.id)}>Eliminar</Button>
             </CardBody>
         </Card> 
         </div>

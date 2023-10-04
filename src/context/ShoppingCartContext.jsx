@@ -10,34 +10,39 @@ export const ShoppingCartProvider = ({children})=> {
     const [cantidad, setCantidad] = useState(0) 
     const [cart, setCart] = useState([])  
     const [montoAPagar, setMontoAPagar] = useState(0)
+    const [cantidadCart, setCantidadCart] = useState(0)
+
+
+    const isInCart = (id) => {
+        return cart.find((item) => item.id === id)
+    }
 
     const addItem = (item, quantity) => {
         setCart([...cart, item])
+        setCantidadCart(cantidadCart + cantidad)
         item.cantidadAgregada = quantity
         item.precioFinal = item.precio * quantity
         setMontoAPagar(montoAPagar + item.precioFinal)
         console.log(cart)
+        setCantidad(0)
     }
 
-    const removeItem = (id) => {
-        const newCart = cart.filter((p)=> p.id !== id)
-        setCart(newCart)
-        //tira error
+
+
+    const removeItem = (item,ItemId) => {
+        setCart(cart.filter((p)=> p.id !== ItemId))
+        setCantidadCart(cantidadCart - item.cantidadAgregada)
     }
 
     const clearCart= () => {
         setCart([])
-        setCantidad(0)
+        setCantidadCart(0)
     }
 
-    /* 
-      removeItem(itemId) // Remover un item del cart por usando su id
-      isInCart: (id) => true|false
- */
 
 
     return(
-        <CartContext.Provider value={{id, cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, clearCart,removeItem}}>  {/* doble llave */}
+        <CartContext.Provider value={{id, cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, clearCart,removeItem,cantidadCart,setCantidadCart}}>  {/* doble llave */}
             {children}
         </CartContext.Provider>
     )
