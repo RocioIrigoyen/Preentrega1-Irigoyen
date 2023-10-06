@@ -14,17 +14,35 @@ export const ShoppingCartProvider = ({children})=> {
 
 
     const isInCart = (id) => {
-        return cart.find((item) => item.id === id)
+        return cart.find((item) => item.id === id) ? true : false
     }
 
     const addItem = (item, quantity) => {
-        setCart([...cart, item])
-        setCantidadCart(cantidadCart + cantidad)
-        item.cantidadAgregada = quantity
-        item.precioFinal = item.precio * quantity
-        setMontoAPagar(montoAPagar + item.precioFinal)
-        console.log(cart)
-        setCantidad(0)
+        if (isInCart(item.id)){
+            item.cantidadAgregada += quantity
+            item.precioFinal = item.precio * quantity
+            setCart(
+                cart.map((p)=>{
+                    return p.id === item.id ?
+                    {...p, cantidadAgregada: p.cantidadAgregada += quantity} && 
+                    {...p, precioFinal: p.precioFinal += (p.precio * quantity)} :
+                    p
+                })
+            )
+            setCantidadCart(cantidadCart + quantity)
+            setMontoAPagar(montoAPagar + item.precio * quantity)
+            setCantidad(0)
+
+        } else {
+            setCart([...cart, item])
+            setCantidadCart(cantidadCart + quantity)
+            item.cantidadAgregada = quantity
+            item.precioFinal = item.precio * quantity
+            setMontoAPagar(montoAPagar + item.precioFinal)
+            console.log(cart)
+            setCantidad(0)
+        }
+
     }
 
 
@@ -32,11 +50,14 @@ export const ShoppingCartProvider = ({children})=> {
     const removeItem = (item,ItemId) => {
         setCart(cart.filter((p)=> p.id !== ItemId))
         setCantidadCart(cantidadCart - item.cantidadAgregada)
+        setMontoAPagar (montoAPagar - item.precioFinal)
+        item.cantidadAgregada = 0
     }
 
     const clearCart= () => {
         setCart([])
         setCantidadCart(0)
+        setMontoAPagar (0)
     }
 
 

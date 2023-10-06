@@ -26,7 +26,7 @@ const Form = () => {
         nombre, email
       },
 
-      items: cart.map(({nombre, precio, precioFinal, cantidadAgregada})=>({nombre, precio, precioFinal, cantidadAgregada})
+      items: cart.map(({id, nombre, precio, precioFinal, cantidadAgregada})=>({id, nombre, precio, precioFinal, cantidadAgregada})
       )
 
     }
