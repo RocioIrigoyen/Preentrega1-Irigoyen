@@ -5,10 +5,10 @@ import NavBar from "./components/NavBar"
 import ItemListContainer from "./components/itemListContainer"
 import Contacto from "./components/Contacto"
 import Cart from "./components/Cart"
-import Form from "./components/Form"
-import { useEffect, useState } from "react"
-import Loader from "./components/Loader"
-import Document from "./components/Document"
+import Checkout from "./components/Checkout"
+
+
+
 
 //Renderizado condicional basado en una expresión
 
@@ -49,8 +49,9 @@ const App = () => {
           <Route exact path="/" element={<ItemListContainer/>}/>
           <Route exact path="/contacto" element={<Contacto/>}/>
           <Route exact path="/cart" element={<Cart/>}/>
-          <Route exact path="/item/:id" element={<Document/>}/>
+          <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
           <Route exact path="/category/:categoryId" element={<ItemListContainer/>}/>
+          <Route exact path="/checkout" element={<Checkout/>}/>
         </Routes>
      </ShoppingCartContext>
     </BrowserRouter>

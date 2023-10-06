@@ -40,14 +40,16 @@ const Cart = () => {
     {cart.length > 0 ? 
     <div>
       <h3>Monto a pagar: ${montoAPagar}</h3>
-      <Form/>
+      <Link to={"/checkout"}>
+        <Button>Finalizar compra</Button>
+      </Link>
       <Button onClick={clearCart}>Vaciar carrito</Button>
     </div>
     : 
     <div>
       <h2>No hay productos en el carrito</h2>
       <Link to={"/"}>
-       <button>Volver al inicio</button>
+       <Button>Volver al inicio</Button>
        </Link> 
     </div>}
     

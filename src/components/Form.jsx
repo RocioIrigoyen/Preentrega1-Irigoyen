@@ -1,13 +1,14 @@
 import React from 'react'
 import { collection, getFirestore, addDoc } from 'firebase/firestore'
 import { useState } from 'react'
-import Cart from './Cart'
 import { CartContext } from '../context/ShoppingCartContext'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '@chakra-ui/react'
 
 const Form = () => {
 
-  const {cart} = useContext(CartContext)
+  const {cart, clearCart} = useContext(CartContext)
 
     const [nombre, setNombre] = useState("")
     const [email, setEmail] = useState("")
@@ -41,9 +42,12 @@ const Form = () => {
         </form>
 
         { 
-         purchasedId === "" ? 
-         <p>Por favor, ingresa tus datos</p> : 
-         <p>Tu compra fue realizada con éxito. ID: {purchasedId}</p>
+         purchasedId === null ? 
+         <p>Por favor, ingresa tus datos</p> :
+         <div>
+          <p>Tu compra fue realizada con éxito. ID: {purchasedId}</p>
+          <Link to={"/"}><Button onClick={clearCart}>Finalizar</Button></Link>
+         </div> 
 
         }
     </>
