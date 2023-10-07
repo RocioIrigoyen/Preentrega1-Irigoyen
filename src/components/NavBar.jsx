@@ -10,7 +10,7 @@ return (
   <>
   <Flex bg="pink">
   <Box p='4' >
-    <Link to={"/"}>
+    <Link to={"/home"}>
       Cookie Submarine
     </Link>
   </Box >

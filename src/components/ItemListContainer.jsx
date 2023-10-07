@@ -1,9 +1,10 @@
 import ItemList from "./ItemList"
-import { useParams } from "react-router-dom"
-import { SimpleGrid} from '@chakra-ui/react'
+import { Link, useParams } from "react-router-dom"
+import { SimpleGrid, Button} from '@chakra-ui/react'
 import {useState,useEffect}from 'react'
 import {collection, getDocs, getFirestore} from "firebase/firestore"
 import Loader from "./Loader"
+
 
 
 
@@ -43,11 +44,16 @@ if (loading){
   return <Loader/>
 }
 
+ 
+
+
 
   return (
     <>
+    <Link to={"/home"}>
+    <Button colorScheme='pink' variant='outline'>Ir al inicio</Button>
+    </Link>
 
-    <h1>Te damos la bienvenida a Cookie Submarine</h1>
 
     <SimpleGrid columns={2} spacing={10}>
     <ItemList

@@ -26,7 +26,7 @@ const ItemDetail = ({producto}) => {
                             <CardBody>
                                 <Heading size='md'>{producto.nombre}</Heading>
                         
-                                    <Text color='blue.600' fontSize='2xl'>
+                                    <Text color='pink.600' fontSize='2xl'>
                                     ${producto.precio}
                                     </Text>
                                     <Text py='2'>

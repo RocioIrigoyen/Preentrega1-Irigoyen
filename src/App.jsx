@@ -6,6 +6,7 @@ import ItemListContainer from "./components/itemListContainer"
 import Contacto from "./components/Contacto"
 import Cart from "./components/Cart"
 import Checkout from "./components/Checkout"
+import Home from "./components/Home"
 
 
 
@@ -47,6 +48,7 @@ const App = () => {
 
         <Routes>
           <Route exact path="/" element={<ItemListContainer/>}/>
+          <Route exact path="/home" element={<Home/>}/>
           <Route exact path="/contacto" element={<Contacto/>}/>
           <Route exact path="/cart" element={<Cart/>}/>
           <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>

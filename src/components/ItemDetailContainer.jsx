@@ -5,7 +5,6 @@ import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
   const {id} = useParams()
-  console.log(id)
   const[producto, setProducto] = useState([])
 
   useEffect(()=>{
@@ -15,7 +14,6 @@ const ItemDetailContainer = () => {
           if (snapshot.exists()){
               const docs = snapshot.data()
               const docId = snapshot.id
-              console.log(docId)
               setProducto(docs)
           }
       })

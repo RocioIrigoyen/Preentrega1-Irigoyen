@@ -1,5 +1,7 @@
 import { createContext, React, useState} from 'react'
 import { useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CartContext = createContext(null)
 
@@ -52,6 +54,8 @@ export const ShoppingCartProvider = ({children})=> {
         setCantidadCart(cantidadCart - item.cantidadAgregada)
         setMontoAPagar (montoAPagar - item.precioFinal)
         item.cantidadAgregada = 0
+        toast.info(`Eliminaste el producto del carrito`, {
+        position: toast.POSITION.TOP_CENTER})
     }
 
     const clearCart= () => {
@@ -65,6 +69,7 @@ export const ShoppingCartProvider = ({children})=> {
     return(
         <CartContext.Provider value={{id, cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, clearCart,removeItem,cantidadCart,setCantidadCart}}>  {/* doble llave */}
             {children}
+            <ToastContainer/>
         </CartContext.Provider>
     )
 }

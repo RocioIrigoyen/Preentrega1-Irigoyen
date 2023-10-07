@@ -1,22 +1,37 @@
 import React from 'react'
-import {useState, useEffect, useContext} from "react"
+import {useState, useContext} from "react"
 import {NumberInput, NumberInputField,NumberInputStepper,NumberIncrementStepper,NumberDecrementStepper,Button} from "@chakra-ui/react"
 import { CartContext } from '../context/ShoppingCartContext'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ItemCount = ({p}) => {
   
-    const {cart, setCart, cantidad, setCantidad, montoAPagar, setMontoAPagar, addItem, id} = useContext(CartContext)
+    const {cantidad, setCantidad, addItem} = useContext(CartContext)
 
 
     const [ocultar, setOcultar] = useState(false)
+
+    const mensajeDeExito = () => {
+      toast.success(`Agregaste ${cantidad} unidades de ${p.nombre} al carrito`, {
+          position: toast.POSITION.TOP_CENTER
+      })
+  }
+
+  const mensajeDeError = () => {
+    toast.error(`Por favor, indicá la cantidad de productos`, {
+        position: toast.POSITION.TOP_CENTER
+    })
+}
+
 
     const onAdd = () => {
       if (cantidad > 0) {
         addItem(p, cantidad)
         setOcultar(true)
-        alert(`Agregado al carrito: ${cantidad} productos`)
+        mensajeDeExito()
       } else {
-        alert("Por favor, indique la cantidad de productos")
+        mensajeDeError()
       }
 
     }
@@ -36,6 +51,7 @@ const ItemCount = ({p}) => {
     
     return (
       <>
+      <ToastContainer />
 
       { !ocultar && (
         <>
@@ -47,7 +63,7 @@ const ItemCount = ({p}) => {
           </NumberInputStepper>
         </NumberInput>
         
-        <Button variant='solid' colorScheme='blue' onClick={onAdd}>Agregar al carrito</Button>
+        <Button variant='solid' colorScheme='pink' onClick={onAdd}>Agregar al carrito</Button>
         </>
        )
       }
