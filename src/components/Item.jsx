@@ -2,18 +2,19 @@ import React from 'react'
 import {Card,CardBody,Image,Stack,Heading,Divider,CardFooter,ButtonGroup,Button} from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
-const Item = ({nombre, id}) => {
+const Item = ({nombre, id, imagen}) => {
   return (
     <div>
-        <Card maxW='sm'>
+        <Card maxW='sm' align="center">
             <CardBody>
                 <Image
-                src='https://sugarfreelondoner.com/wp-content/uploads/2020/12/sugar-free-birthday-cake-chocolate-1200.jpg'
-                alt='torta de chocolate'
+                boxSize='250px' 
+                src={imagen}
+                alt='img'
                 borderRadius='lg'
                 />
                 <Stack mt='6' spacing='3'>
-                    <Heading size='md'>{nombre}</Heading>
+                    <Heading size='md' textAlign="center">{nombre}</Heading>
                 </Stack>
             </CardBody>
             <Divider />

@@ -18,8 +18,8 @@ const ItemDetail = ({producto}) => {
                         <Image
                             objectFit='cover'
                             maxW={{ base: '100%', sm: '200px' }}
-                            src='https://sugarfreelondoner.com/wp-content/uploads/2020/12/sugar-free-birthday-cake-chocolate-1200.jpg'
-                            alt='torta de chocolate'
+                            src= {producto.imagen}
+                            alt='img'
                             />
             
                         <Stack>
@@ -33,7 +33,7 @@ const ItemDetail = ({producto}) => {
                                         {producto.descripcion}
                                     </Text>
                                     <Text py='2'>
-                                        Stock disponible: {producto.stock}
+                                        Stock disponible: {producto.stock} 
                                     </Text>
                                 </CardBody>
                     

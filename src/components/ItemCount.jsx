@@ -12,26 +12,18 @@ const ItemCount = ({p}) => {
 
     const [ocultar, setOcultar] = useState(false)
 
-    const mensajeDeExito = () => {
-      toast.success(`Agregaste ${cantidad} unidades de ${p.nombre} al carrito`, {
-          position: toast.POSITION.TOP_CENTER
-      })
-  }
-
-  const mensajeDeError = () => {
-    toast.error(`Por favor, indicá la cantidad de productos`, {
-        position: toast.POSITION.TOP_CENTER
-    })
-}
-
 
     const onAdd = () => {
       if (cantidad > 0) {
         addItem(p, cantidad)
         setOcultar(true)
-        mensajeDeExito()
+        toast.success(`Agregaste ${cantidad} unidades de ${p.nombre} al carrito`, {
+          position: toast.POSITION.TOP_LEFT
+         })
       } else {
-        mensajeDeError()
+        toast.error(`Por favor, indicá la cantidad de productos`, {
+          position: toast.POSITION.TOP_LEFT
+       })
       }
 
     }
@@ -51,7 +43,7 @@ const ItemCount = ({p}) => {
     
     return (
       <>
-      <ToastContainer />
+      <ToastContainer/>
 
       { !ocultar && (
         <>

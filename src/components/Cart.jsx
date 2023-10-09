@@ -21,8 +21,8 @@ const Cart = () => {
         <Image
          objectFit='cover'
           maxW={{ base: '100%', sm: '200px' }}
-          src='https://sugarfreelondoner.com/wp-content/uploads/2020/12/sugar-free-birthday-cake-chocolate-1200.jpg'
-          alt='torta de chocolate'
+          src={p.imagen}
+          alt='img'
           borderRadius='lg'
           />                
           <Stack mt='6' spacing='3'>
@@ -58,7 +58,7 @@ const Cart = () => {
     : 
     <div>
       <h2>No hay productos en el carrito</h2>
-      <Link to={"/"}>
+      <Link to={"/home"}>
        <Button colorScheme='pink'>Volver al inicio</Button>
        </Link> 
     </div>}
